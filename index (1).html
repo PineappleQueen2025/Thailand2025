@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Thailand Reiseplan 2025</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
+      background-color: #fefefe;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #007f73;
+    }
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin-bottom: 1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5em;
+      text-align: left;
+    }
+    th {
+      background-color: #e0f7f1;
+    }
+    .section {
+      margin-top: 2em;
+    }
+    .highlight {
+      background-color: #f4fdfd;
+      padding: 1em;
+      border-left: 4px solid #00a693;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Strandbild">
+  <h1>🌴 Thailand Reiseplan: Khanom, Koh Samui & Koh Phangan</h1>
+
+  <div class="highlight">
+    <p><strong>📅 Reisezeitraum:</strong> 07.09.2025 – 20.09.2025</p>
+    <p><strong>🚄 Inklusive Zug zum Flug:</strong> Rail&Fly oder ICE-Verbindung ab Leipzig Hbf zum Flughafen Frankfurt/Main sowie Rückfahrt inklusive</p>
+    <p><strong>🏨 Unterkunft Khanom:</strong> Margarita Beach Resort</p>
+  </div>
+
+  <h2>👥 Reisende</h2>
+  <ul>
+    <li>Laetitia M'Boussa, *15.07.1999*</li>
+    <li>Ines M'Boussa, *23.07.1971*</li>
+  </ul>
+
+  <h2>🧳 Gepäck</h2>
+  <ul>
+    <li>Handgepäck: 8 kg pro Person (55x40x20 cm)</li>
+    <li>Aufgabegepäck: 20 kg pro Person (max. 158 cm Umfang)</li>
+  </ul>
+
+  <h2>✈️ An- & Abreise inklusive Zug zum Flug</h2>
+  <p><strong>Zuganreise:</strong> Leipzig Hbf → Frankfurt Flughafen am 06.09.2025</p>
+  <p><strong>Hinflug:</strong> FRA → BKK → USM (Condor + Bangkok Airways)</p>
+  <p><strong>Rückflug:</strong> USM → BKK → FRA → Leipzig</p>
+
+  <h2>📆 Kalenderübersicht der Unterkünfte</h2>
+  <table>
+    <tr><th>📅 Datum</th><th>📍 Ort</th><th>🏨 Unterkunft & Plan</th></tr>
+    <tr><td>06.09.2025</td><td>Frankfurt</td><td>Anreise</td></tr>
+    <tr><td>07.–09.09.</td><td>Khanom</td><td>Margarita Beach Resort</td></tr>
+    <tr><td>10.–12.09.</td><td>Koh Samui</td><td>z. B. Melia / Casa de Mar</td></tr>
+    <tr><td>13.–14.09.</td><td>Koh Phangan</td><td>z. B. Haad Yuan Beach Resort</td></tr>
+    <tr><td>15.–19.09.</td><td>Khanom</td><td>Margarita Beach Resort</td></tr>
+    <tr><td>20.–21.09.</td><td>Rückreise</td><td>Transfer + Heimflug</td></tr>
+  </table>
+
+  <div class="section">
+    <h2>📝 Notizseite</h2>
+    <form onsubmit="event.preventDefault(); localStorage.setItem('reise-notizen', JSON.stringify({
+      tag: document.getElementById('tag').value,
+      gut: document.getElementById('gut').value,
+      merken: document.getElementById('merken').value,
+      ideen: document.getElementById('ideen').value
+    }))">
+      <label for="tag"><strong>Tag / Aktivität:</strong></label><br>
+      <input id="tag" type="text" style="width:100%"><br><br>
+
+      <label for="gut"><strong>Was lief besonders gut?</strong></label><br>
+      <textarea id="gut" rows="2" style="width:100%"></textarea><br><br>
+
+      <label for="merken"><strong>Was möchten wir merken / wiederholen?</strong></label><br>
+      <textarea id="merken" rows="2" style="width:100%"></textarea><br><br>
+
+      <label for="ideen"><strong>Ideen, Fotos, Einkauf:</strong></label><br>
+      <textarea id="ideen" rows="3" style="width:100%"></textarea><br><br>
+
+      <button type="submit">💾 Speichern (lokal)</button><br><br>
+      <label for="photo"><strong>📸 Foto (nur lokal):</strong></label><br>
+      <input type="file" id="photo" accept="image/*"><br><br>
+      <img id="preview" src="" alt="Vorschau" style="max-width:100%; display:none; margin-top:1em;">
+      <br><br>
+      <button type="button" onclick="localStorage.clear(); location.reload();">🧽 Alles löschen</button>
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>📓 Reisetagebuch</h2>
+    <p>Trage hier pro Tag kleine Erlebnisse ein, die du festhalten möchtest.</p>
+    <textarea id="tagebuch" rows="8" style="width:100%"></textarea><br><br>
+    <button onclick="localStorage.setItem('reise-tagebuch', document.getElementById('tagebuch').value)">📖 Speichern</button>
+    <button onclick="document.getElementById('tagebuch').value=''; localStorage.removeItem('reise-tagebuch')">🗑️ Löschen</button>
+  </div>
+
+  <script>
+    const saved = localStorage.getItem('reise-notizen');
+    if (saved) {
+      const data = JSON.parse(saved);
+      document.getElementById('tag').value = data.tag || "";
+      document.getElementById('gut').value = data.gut || "";
+      document.getElementById('merken').value = data.merken || "";
+      document.getElementById('ideen').value = data.ideen || "";
+    }
+
+    document.getElementById('photo').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+          document.getElementById('preview').src = evt.target.result;
+          document.getElementById('preview').style.display = 'block';
+          localStorage.setItem('reise-foto', evt.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    const savedPhoto = localStorage.getItem('reise-foto');
+    if (savedPhoto) {
+      document.getElementById('preview').src = savedPhoto;
+      document.getElementById('preview').style.display = 'block';
+    }
+
+    const savedTagebuch = localStorage.getItem('reise-tagebuch');
+    if (savedTagebuch) {
+      document.getElementById('tagebuch').value = savedTagebuch;
+    }
+  </script>
+
+  <p><strong>✨ Viel Spaß und eine unvergessliche Reise! 🌴</strong></p>
+</body>
+</html>
