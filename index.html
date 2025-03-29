@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -73,16 +72,44 @@
   <p><strong>Hinflug:</strong> FRA → BKK → USM (Condor + Bangkok Airways)</p>
   <p><strong>Rückflug:</strong> USM → BKK → FRA → Leipzig</p>
 
-  <h2>📆 Kalenderübersicht der Unterkünfte</h2>
-  <table>
-    <tr><th>📅 Datum</th><th>📍 Ort</th><th>🏨 Unterkunft & Plan</th></tr>
-    <tr><td>06.09.2025</td><td>Frankfurt</td><td>Anreise</td></tr>
-    <tr><td>07.–09.09.</td><td>Khanom</td><td>Margarita Beach Resort</td></tr>
-    <tr><td>10.–12.09.</td><td>Koh Samui</td><td>z. B. Melia / Casa de Mar</td></tr>
-    <tr><td>13.–14.09.</td><td>Koh Phangan</td><td>z. B. Haad Yuan Beach Resort</td></tr>
-    <tr><td>15.–19.09.</td><td>Khanom</td><td>Margarita Beach Resort</td></tr>
-    <tr><td>20.–21.09.</td><td>Rückreise</td><td>Transfer + Heimflug</td></tr>
-  </table>
+  <h2>📆 Kalenderübersicht mit Aktivitäten</h2>
+<table>
+  <tr><th>📅 Datum</th><th>📍 Ort</th><th>🗓️ Aktivität & Unterkunft</th></tr>
+  <tr><td>07.09.2025 (So)</td><td>Khanom</td><td>Ankunft im Margarita Beach Resort, Erholung und Strand</td></tr>
+  <tr><td>08.09.2025 (Mo)</td><td>Khanom</td><td>Freizeit & Umgebung erkunden</td></tr>
+  <tr><td>09.09.2025 (Di)</td><td>Khanom</td><td>Bootstour zu den rosa Delfinen (morgens), Relaxen am Strand</td></tr>
+  <tr><td>10.09.2025 (Mi)</td><td>Koh Samui</td><td>Transfer nach Koh Samui, Check-in</td></tr>
+  <tr><td>11.09.2025 (Do)</td><td>Koh Samui</td><td>Besuch eines ethischen Elefanten-Schutzgebiets & Dschungelwanderung</td></tr>
+  <tr><td>12.09.2025 (Fr)</td><td>Koh Samui</td><td>Big Buddha & Wat Plai Laem (Inselerkundung)</td></tr>
+  <tr><td>13.09.2025 (Sa)</td><td>Koh Phangan</td><td>Fähre nach Koh Phangan, Check-in</td></tr>
+  <tr><td>14.09.2025 (So)</td><td>Koh Phangan</td><td>Erkundung der Insel, z. B. Haad Yuan Beach & Dome Sila Viewpoint</td></tr>
+  <tr><td>15.09.2025 (Mo)</td><td>Khanom</td><td>Rückfahrt nach Khanom, Erholung im Resort</td></tr>
+  <tr><td>16.–19.09.</td><td>Khanom</td><td>Entspannung & optionale Aktivitäten: Wasserfall, Kajaktour, Kochkurs</td></tr>
+  <tr><td>20.09.2025 (Sa)</td><td>Transfer</td><td>Abreise & Rückflug</td></tr>
+</table>
+
+<div class="section">
+  <h2>📋 Tagesplan: Aktivitäten & Erlebnisse</h2>
+  <ul>
+    <li><strong>07.09. (So):</strong> Ankunft im Margarita Beach Resort, Erholung & Strand</li>
+    <li><strong>08.09. (Mo):</strong> Erkundung von Khanom & Umgebung</li>
+    <li><strong>09.09. (Di):</strong> Bootstour zu den rosa Delfinen (morgens), Relax am Strand</li>
+    <li><strong>10.09. (Mi):</strong> Transfer nach Koh Samui (Fähre ab Donsak Pier), Check-in</li>
+    <li><strong>11.09. (Do):</strong> Elefanten-Schutzgebiet & Dschungel-Tour mit Mittagessen</li>
+    <li><strong>12.09. (Fr):</strong> Big Buddha & Wat Plai Laem Tempelbesichtigung</li>
+    <li><strong>13.09. (Sa):</strong> Fähre nach Koh Phangan, Check-in & Freizeit</li>
+    <li><strong>14.09. (So):</strong> Inselerkundung (z. B. Haad Yuan Beach & Viewpoint)</li>
+    <li><strong>15.09. (Mo):</strong> Rückreise nach Khanom, Entspannung im Resort</li>
+    <li><strong>16.–19.09.:</strong> Freie Tage in Khanom – optional: 
+      <ul>
+        <li>Namtok Sai Rung Wasserfall</li>
+        <li>Kajaktour durch die Mangroven</li>
+        <li>Thailändischer Kochkurs</li>
+      </ul>
+    </li>
+    <li><strong>20.09. (Sa):</strong> Abreise & Rückflug</li>
+  </ul>
+</div>
 
   <div class="section">
     <h2>📦 Packliste</h2>
@@ -97,12 +124,75 @@
   </div>
 
   <div class="section">
-    <h2>📝 Notizseite</h2>
-    <p><strong>Tag / Aktivität:</strong> __________________________</p>
-    <p><strong>Was lief besonders gut?</strong><br>_____________________________</p>
-    <p><strong>Was möchten wir merken / wiederholen?</strong><br>_____________________________</p>
-    <p><strong>Ideen, Fotos, Einkauf:</strong><br>_____________________________</p>
-  </div>
+  <h2>📝 Notizseite</h2>
+  <form onsubmit="event.preventDefault(); localStorage.setItem('reise-notizen', JSON.stringify({
+    tag: document.getElementById('tag').value,
+    gut: document.getElementById('gut').value,
+    merken: document.getElementById('merken').value,
+    ideen: document.getElementById('ideen').value
+  }))">
+    <label for="tag"><strong>Tag / Aktivität:</strong></label><br>
+    <input id="tag" type="text" style="width:100%"><br><br>
+
+    <label for="gut"><strong>Was lief besonders gut?</strong></label><br>
+    <textarea id="gut" rows="2" style="width:100%"></textarea><br><br>
+
+    <label for="merken"><strong>Was möchten wir merken / wiederholen?</strong></label><br>
+    <textarea id="merken" rows="2" style="width:100%"></textarea><br><br>
+
+    <label for="ideen"><strong>Ideen, Fotos, Einkauf:</strong></label><br>
+    <textarea id="ideen" rows="3" style="width:100%"></textarea><br><br>
+
+    <button type="submit">💾 Speichern (lokal)</button>
+  <br>
+    <label for="photo"><strong>📸 Foto (nur lokal):</strong></label><br>
+    <input type="file" id="photo" accept="image/*"><br><br>
+    <img id="preview" src="" alt="Vorschau" style="max-width:100%; display:none; margin-top:1em;">
+    <br><br>
+    <button type="button" onclick="localStorage.clear(); location.reload();">🧽 Alles löschen</button>
+</form>
+</div>
+
+<div class="section">
+  <h2>📓 Reisetagebuch</h2>
+  <p>Trage hier pro Tag kleine Erlebnisse ein, die du festhalten möchtest.</p>
+  <textarea id="tagebuch" rows="8" style="width:100%"></textarea><br><br>
+  <button onclick="localStorage.setItem('reise-tagebuch', document.getElementById('tagebuch').value)">📖 Speichern</button>
+  <button onclick="document.getElementById('tagebuch').value=''; localStorage.removeItem('reise-tagebuch')">🗑️ Löschen</button>
+</div>
+
+<script>
+  const saved = localStorage.getItem('reise-notizen');
+  if (saved) {
+    const data = JSON.parse(saved);
+    document.getElementById('tag').value = data.tag || "";
+    document.getElementById('gut').value = data.gut || "";
+    document.getElementById('merken').value = data.merken || "";
+    document.getElementById('ideen').value = data.ideen || "";
+  }
+  document.getElementById('photo').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        document.getElementById('preview').src = evt.target.result;
+        document.getElementById('preview').style.display = 'block';
+        localStorage.setItem('reise-foto', evt.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  const savedPhoto = localStorage.getItem('reise-foto');
+  if (savedPhoto) {
+    document.getElementById('preview').src = savedPhoto;
+    document.getElementById('preview').style.display = 'block';
+  }
+  const savedTagebuch = localStorage.getItem('reise-tagebuch');
+  if (savedTagebuch) {
+    document.getElementById('tagebuch').value = savedTagebuch;
+  }
+</script>
 
   <p><strong>✨ Viel Spaß und eine unvergessliche Reise! 🌴</strong></p>
 </body>
